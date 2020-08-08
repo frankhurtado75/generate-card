@@ -56,14 +56,20 @@ export function Home() {
 				<button
 					className="btn btn-primary"
 					onClick={e => {
-						//Hay que actualizar el estado people con los valores de los estados
-						let newPerson = {
-							corporation: corporation,
-							name: name,
-							fondo: fondo,
-							job: job
-						};
-						/*
+						if (
+							corporation != "" &&
+							name != "" &&
+							fondo != "" &&
+							job != ""
+						) {
+							//Hay que actualizar el estado people con los valores de los estados
+							let newPerson = {
+								corporation: corporation,
+								name: name,
+								fondo: fondo,
+								job: job
+							};
+							/*
 					//Copiar people
 					let newPeople = [];
 					for (let person of people) {
@@ -74,12 +80,15 @@ export function Home() {
 					//setPeople de la copia
 					setPeople(newPeople);
 					*/
-						//Spread operator ...
-						setPeople([...people, newPerson]);
-						setCorporation("");
-						setName("");
-						setFondo("");
-						setJob("");
+							//Spread operator ...
+							setPeople([...people, newPerson]);
+							setCorporation("");
+							setName("");
+							setFondo("");
+							setJob("");
+						} else {
+							alert("Cannot create items without data");
+						}
 					}}>
 					{"Add Card"}
 				</button>
